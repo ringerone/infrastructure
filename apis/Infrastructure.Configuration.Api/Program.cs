@@ -93,6 +93,18 @@ builder.Services.AddScoped<IFeatureFlagService>(sp =>
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<IConfigurationNotificationService, ConfigurationNotificationService>();
 
+// Configure CORS to allow Angular app
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials(); // Required for SignalR
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
@@ -103,6 +115,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Enable CORS (must be before UseAuthorization and after UseRouting/UseHttpsRedirection)
+app.UseCors("AllowAngularApp");
 
 // Add tenant middleware early in pipeline
 app.UseTenantContext();

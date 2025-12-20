@@ -23,7 +23,7 @@ export interface FeatureFlag {
   providedIn: 'root'
 })
 export class ConfigurationService {
-  private apiUrl = 'https://localhost:5001/api';
+  private apiUrl = 'https://localhost:53012/api';
   private hubConnection?: HubConnection;
   private configurationChanged$ = new Subject<Configuration>();
   private featureFlagChanged$ = new Subject<FeatureFlag>();
