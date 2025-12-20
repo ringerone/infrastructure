@@ -98,7 +98,7 @@ This solution follows all SOLID principles:
 ## Getting Started
 
 ### Prerequisites
-- .NET 8.0 SDK
+- .NET 10.0 SDK
 - MongoDB (for data storage)
 - Node.js and npm (for Angular UI)
 
