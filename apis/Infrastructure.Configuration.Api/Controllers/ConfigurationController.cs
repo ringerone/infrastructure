@@ -1,6 +1,7 @@
 using Infrastructure.Configuration;
 using Infrastructure.Configuration.Api;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace Infrastructure.Configuration.Api.Controllers;
 
@@ -65,9 +66,16 @@ public class ConfigurationController : ControllerBase
     {
         try
         {
+            // Convert JsonElement to actual value type for MongoDB serialization
+            object value = request.Value;
+            if (value is System.Text.Json.JsonElement jsonElement)
+            {
+                value = ConfigurationControllerHelpers.ConvertJsonElement(jsonElement);
+            }
+
             await _configurationService.SetValueAsync(
                 request.Key,
-                request.Value,
+                value,
                 request.Scope,
                 request.ScopeIdentifier,
                 cancellationToken);
@@ -107,9 +115,42 @@ public class ConfigurationController : ControllerBase
 
 public class SetConfigurationRequest
 {
+    [System.Text.Json.Serialization.JsonPropertyName("key")]
     public string Key { get; set; } = string.Empty;
+    
+    [System.Text.Json.Serialization.JsonPropertyName("value")]
     public object Value { get; set; } = default!;
+    
+    [System.Text.Json.Serialization.JsonPropertyName("scope")]
     public ConfigurationScope Scope { get; set; }
+    
+    [System.Text.Json.Serialization.JsonPropertyName("scopeIdentifier")]
     public string? ScopeIdentifier { get; set; }
+}
+
+/// <summary>
+/// Helper methods for configuration controller
+/// </summary>
+public static class ConfigurationControllerHelpers
+{
+    /// <summary>
+    /// Converts JsonElement to a MongoDB-serializable value
+    /// </summary>
+    public static object ConvertJsonElement(System.Text.Json.JsonElement element)
+    {
+        return element.ValueKind switch
+        {
+            System.Text.Json.JsonValueKind.String => element.GetString()!,
+            System.Text.Json.JsonValueKind.Number => element.TryGetInt64(out var longValue) ? longValue : element.GetDouble(),
+            System.Text.Json.JsonValueKind.True => true,
+            System.Text.Json.JsonValueKind.False => false,
+            System.Text.Json.JsonValueKind.Null => null!,
+            System.Text.Json.JsonValueKind.Array => element.EnumerateArray().Select(ConvertJsonElement).ToArray(),
+            System.Text.Json.JsonValueKind.Object => element.EnumerateObject().ToDictionary(
+                prop => prop.Name,
+                prop => ConvertJsonElement(prop.Value)),
+            _ => element.GetRawText()
+        };
+    }
 }
 

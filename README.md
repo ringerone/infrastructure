@@ -99,8 +99,18 @@ This solution follows all SOLID principles:
 
 ### Prerequisites
 - .NET 10.0 SDK
-- MongoDB (for data storage)
+- MongoDB (for data storage) - See [MongoDB Setup Guide](MONGODB.md)
 - Node.js and npm (for Angular UI)
+- Docker Desktop (for running MongoDB in a container)
+
+### MongoDB Setup
+
+Before running the API, you need to set up MongoDB. See the [MongoDB Setup Guide](MONGODB.md) for detailed instructions on:
+- Starting MongoDB with Docker
+- Configuration and connection strings
+- Troubleshooting common issues
+- Setting up authentication
+- Data persistence options
 
 ### Configuration API Setup
 
