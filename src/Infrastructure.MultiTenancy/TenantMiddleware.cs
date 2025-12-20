@@ -15,18 +15,15 @@ public class TenantMiddleware
     private readonly RequestDelegate _next;
     private readonly ITenantContextAccessor _tenantContextAccessor;
     private readonly ILogger<TenantMiddleware> _logger;
-    private readonly ITenantResolver _tenantResolver;
 
     public TenantMiddleware(
         RequestDelegate next,
         ITenantContextAccessor tenantContextAccessor,
-        ILogger<TenantMiddleware> logger,
-        ITenantResolver tenantResolver)
+        ILogger<TenantMiddleware> logger)
     {
         _next = next;
         _tenantContextAccessor = tenantContextAccessor;
         _logger = logger;
-        _tenantResolver = tenantResolver;
     }
 
     public async Task InvokeAsync(HttpContext context)
@@ -36,8 +33,11 @@ public class TenantMiddleware
 
         if (!string.IsNullOrEmpty(tenantId))
         {
+            // Resolve ITenantResolver from request scope (scoped service)
+            var tenantResolver = context.RequestServices.GetRequiredService<ITenantResolver>();
+            
             // Resolve full tenant context (including database connection)
-            var tenantContext = await _tenantResolver.ResolveTenantAsync(tenantId, context.RequestAborted);
+            var tenantContext = await tenantResolver.ResolveTenantAsync(tenantId, context.RequestAborted);
             
             if (tenantContext != null)
             {
