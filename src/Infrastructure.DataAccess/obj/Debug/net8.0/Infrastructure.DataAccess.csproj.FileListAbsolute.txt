@@ -1,0 +1,15 @@
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.DataAccess\bin\Debug\net8.0\Infrastructure.DataAccess.deps.json
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.DataAccess\bin\Debug\net8.0\Infrastructure.DataAccess.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.DataAccess\bin\Debug\net8.0\Infrastructure.DataAccess.pdb
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.DataAccess\bin\Debug\net8.0\Infrastructure.MultiTenancy.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.DataAccess\bin\Debug\net8.0\Infrastructure.MultiTenancy.pdb
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.DataAccess\obj\Debug\net8.0\Infrastructure.DataAccess.csproj.AssemblyReference.cache
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.DataAccess\obj\Debug\net8.0\Infrastructure.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.DataAccess\obj\Debug\net8.0\Infrastructure.DataAccess.AssemblyInfoInputs.cache
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.DataAccess\obj\Debug\net8.0\Infrastructure.DataAccess.AssemblyInfo.cs
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.DataAccess\obj\Debug\net8.0\Infrastructure.DataAccess.csproj.CoreCompileInputs.cache
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.DataAccess\obj\Debug\net8.0\Infrastr.795AC929.Up2Date
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.DataAccess\obj\Debug\net8.0\Infrastructure.DataAccess.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.DataAccess\obj\Debug\net8.0\refint\Infrastructure.DataAccess.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.DataAccess\obj\Debug\net8.0\Infrastructure.DataAccess.pdb
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.DataAccess\obj\Debug\net8.0\ref\Infrastructure.DataAccess.dll

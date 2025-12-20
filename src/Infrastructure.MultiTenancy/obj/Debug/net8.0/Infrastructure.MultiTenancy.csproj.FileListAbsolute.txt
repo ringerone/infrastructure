@@ -1,0 +1,12 @@
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.MultiTenancy\bin\Debug\net8.0\Infrastructure.MultiTenancy.deps.json
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.MultiTenancy\bin\Debug\net8.0\Infrastructure.MultiTenancy.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.MultiTenancy\bin\Debug\net8.0\Infrastructure.MultiTenancy.pdb
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.MultiTenancy\obj\Debug\net8.0\Infrastructure.MultiTenancy.csproj.AssemblyReference.cache
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.MultiTenancy\obj\Debug\net8.0\Infrastructure.MultiTenancy.GeneratedMSBuildEditorConfig.editorconfig
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.MultiTenancy\obj\Debug\net8.0\Infrastructure.MultiTenancy.AssemblyInfoInputs.cache
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.MultiTenancy\obj\Debug\net8.0\Infrastructure.MultiTenancy.AssemblyInfo.cs
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.MultiTenancy\obj\Debug\net8.0\Infrastructure.MultiTenancy.csproj.CoreCompileInputs.cache
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.MultiTenancy\obj\Debug\net8.0\Infrastructure.MultiTenancy.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.MultiTenancy\obj\Debug\net8.0\refint\Infrastructure.MultiTenancy.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.MultiTenancy\obj\Debug\net8.0\Infrastructure.MultiTenancy.pdb
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.MultiTenancy\obj\Debug\net8.0\ref\Infrastructure.MultiTenancy.dll

@@ -1,0 +1,17 @@
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\bin\Debug\net8.0\Infrastructure.Logging.deps.json
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\bin\Debug\net8.0\Infrastructure.Logging.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\bin\Debug\net8.0\Infrastructure.Logging.pdb
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\bin\Debug\net8.0\Infrastructure.MultiTenancy.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\bin\Debug\net8.0\Infrastructure.Telemetry.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\bin\Debug\net8.0\Infrastructure.MultiTenancy.pdb
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\bin\Debug\net8.0\Infrastructure.Telemetry.pdb
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\obj\Debug\net8.0\Infrastructure.Logging.csproj.AssemblyReference.cache
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\obj\Debug\net8.0\Infrastructure.Logging.GeneratedMSBuildEditorConfig.editorconfig
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\obj\Debug\net8.0\Infrastructure.Logging.AssemblyInfoInputs.cache
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\obj\Debug\net8.0\Infrastructure.Logging.AssemblyInfo.cs
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\obj\Debug\net8.0\Infrastructure.Logging.csproj.CoreCompileInputs.cache
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\obj\Debug\net8.0\Infrastr.217B91EA.Up2Date
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\obj\Debug\net8.0\Infrastructure.Logging.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\obj\Debug\net8.0\refint\Infrastructure.Logging.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\obj\Debug\net8.0\Infrastructure.Logging.pdb
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Logging\obj\Debug\net8.0\ref\Infrastructure.Logging.dll

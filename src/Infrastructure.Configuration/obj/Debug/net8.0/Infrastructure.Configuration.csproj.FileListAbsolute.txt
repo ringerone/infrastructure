@@ -1,0 +1,17 @@
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\bin\Debug\net8.0\Infrastructure.Configuration.deps.json
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\bin\Debug\net8.0\Infrastructure.Configuration.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\bin\Debug\net8.0\Infrastructure.Configuration.pdb
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\bin\Debug\net8.0\Infrastructure.MultiTenancy.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\bin\Debug\net8.0\Infrastructure.Telemetry.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\bin\Debug\net8.0\Infrastructure.MultiTenancy.pdb
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\bin\Debug\net8.0\Infrastructure.Telemetry.pdb
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\obj\Debug\net8.0\Infrastructure.Configuration.csproj.AssemblyReference.cache
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\obj\Debug\net8.0\Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\obj\Debug\net8.0\Infrastructure.Configuration.AssemblyInfoInputs.cache
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\obj\Debug\net8.0\Infrastructure.Configuration.AssemblyInfo.cs
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\obj\Debug\net8.0\Infrastructure.Configuration.csproj.CoreCompileInputs.cache
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\obj\Debug\net8.0\Infrastr.FE5874DC.Up2Date
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\obj\Debug\net8.0\Infrastructure.Configuration.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\obj\Debug\net8.0\refint\Infrastructure.Configuration.dll
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\obj\Debug\net8.0\Infrastructure.Configuration.pdb
+C:\work\NewInfrastructure\Infrastructure\src\Infrastructure.Configuration\obj\Debug\net8.0\ref\Infrastructure.Configuration.dll

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Infrastructure.Configuration\Infrastructure.Configuration.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure.Configuration.Database\Infrastructure.Configuration.Database.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure.DataAccess.MongoDB\Infrastructure.DataAccess.MongoDB.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure.Logging\Infrastructure.Logging.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure.MultiTenancy\Infrastructure.MultiTenancy.csproj" />
+  </ItemGroup>
+
+</Project>
+

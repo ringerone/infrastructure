@@ -1,0 +1,493 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Configuration.Database\\Infrastructure.Configuration.Database.csproj": {}
+  },
+  "projects": {
+    "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Configuration.Database\\Infrastructure.Configuration.Database.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Configuration.Database\\Infrastructure.Configuration.Database.csproj",
+        "projectName": "Infrastructure.Configuration.Database",
+        "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Configuration.Database\\Infrastructure.Configuration.Database.csproj",
+        "packagesPath": "C:\\Users\\aypn\\.nuget\\packages\\",
+        "outputPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Configuration.Database\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\aypn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Configuration\\Infrastructure.Configuration.csproj": {
+                "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Configuration\\Infrastructure.Configuration.csproj"
+              },
+              "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.DataAccess.MongoDB\\Infrastructure.DataAccess.MongoDB.csproj": {
+                "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.DataAccess.MongoDB\\Infrastructure.DataAccess.MongoDB.csproj"
+              },
+              "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.DataAccess\\Infrastructure.DataAccess.csproj": {
+                "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.DataAccess\\Infrastructure.DataAccess.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.28.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Configuration\\Infrastructure.Configuration.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Configuration\\Infrastructure.Configuration.csproj",
+        "projectName": "Infrastructure.Configuration",
+        "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Configuration\\Infrastructure.Configuration.csproj",
+        "packagesPath": "C:\\Users\\aypn\\.nuget\\packages\\",
+        "outputPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Configuration\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\aypn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.MultiTenancy\\Infrastructure.MultiTenancy.csproj": {
+                "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.MultiTenancy\\Infrastructure.MultiTenancy.csproj"
+              },
+              "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Telemetry\\Infrastructure.Telemetry.csproj": {
+                "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Telemetry\\Infrastructure.Telemetry.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.DataAccess.MongoDB\\Infrastructure.DataAccess.MongoDB.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.DataAccess.MongoDB\\Infrastructure.DataAccess.MongoDB.csproj",
+        "projectName": "Infrastructure.DataAccess.MongoDB",
+        "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.DataAccess.MongoDB\\Infrastructure.DataAccess.MongoDB.csproj",
+        "packagesPath": "C:\\Users\\aypn\\.nuget\\packages\\",
+        "outputPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.DataAccess.MongoDB\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\aypn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.DataAccess\\Infrastructure.DataAccess.csproj": {
+                "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.DataAccess\\Infrastructure.DataAccess.csproj"
+              },
+              "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.MultiTenancy\\Infrastructure.MultiTenancy.csproj": {
+                "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.MultiTenancy\\Infrastructure.MultiTenancy.csproj"
+              },
+              "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Telemetry\\Infrastructure.Telemetry.csproj": {
+                "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Telemetry\\Infrastructure.Telemetry.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.28.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.DataAccess\\Infrastructure.DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.DataAccess\\Infrastructure.DataAccess.csproj",
+        "projectName": "Infrastructure.DataAccess",
+        "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.DataAccess\\Infrastructure.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\aypn\\.nuget\\packages\\",
+        "outputPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.DataAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\aypn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.MultiTenancy\\Infrastructure.MultiTenancy.csproj": {
+                "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.MultiTenancy\\Infrastructure.MultiTenancy.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.MultiTenancy\\Infrastructure.MultiTenancy.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.MultiTenancy\\Infrastructure.MultiTenancy.csproj",
+        "projectName": "Infrastructure.MultiTenancy",
+        "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.MultiTenancy\\Infrastructure.MultiTenancy.csproj",
+        "packagesPath": "C:\\Users\\aypn\\.nuget\\packages\\",
+        "outputPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.MultiTenancy\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\aypn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "System.Diagnostics.DiagnosticSource": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Telemetry\\Infrastructure.Telemetry.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Telemetry\\Infrastructure.Telemetry.csproj",
+        "projectName": "Infrastructure.Telemetry",
+        "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Telemetry\\Infrastructure.Telemetry.csproj",
+        "packagesPath": "C:\\Users\\aypn\\.nuget\\packages\\",
+        "outputPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.Telemetry\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\aypn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.MultiTenancy\\Infrastructure.MultiTenancy.csproj": {
+                "projectPath": "C:\\work\\NewInfrastructure\\Infrastructure\\src\\Infrastructure.MultiTenancy\\Infrastructure.MultiTenancy.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "OpenTelemetry": {
+              "target": "Package",
+              "version": "[1.7.0, )"
+            },
+            "System.Diagnostics.DiagnosticSource": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "System.Diagnostics.PerformanceCounter": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
