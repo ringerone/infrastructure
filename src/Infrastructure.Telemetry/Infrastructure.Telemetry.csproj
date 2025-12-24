@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0" />
-    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="8.0.0" />
-    <PackageReference Include="OpenTelemetry" Version="1.7.0" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="10.0.1" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="10.0.1" />
+    <PackageReference Include="OpenTelemetry" Version="1.14.0" />
   </ItemGroup>
 
   <ItemGroup>

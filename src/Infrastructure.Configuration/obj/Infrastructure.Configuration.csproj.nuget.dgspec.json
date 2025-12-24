@@ -60,11 +60,19 @@
           "dependencies": {
             "Microsoft.Extensions.Caching.Memory": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[10.0.1, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[10.0.1, )"
             },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
               "version": "[10.0.1, )"
+            },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[3.5.2, )"
             }
           },
           "imports": [
@@ -422,7 +430,7 @@
             },
             "System.Diagnostics.DiagnosticSource": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[10.0.1, )"
             }
           },
           "imports": [
@@ -772,15 +780,15 @@
           "dependencies": {
             "OpenTelemetry": {
               "target": "Package",
-              "version": "[1.7.0, )"
+              "version": "[1.14.0, )"
             },
             "System.Diagnostics.DiagnosticSource": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[10.0.1, )"
             },
             "System.Diagnostics.PerformanceCounter": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[10.0.1, )"
             }
           },
           "imports": [
