@@ -51,7 +51,9 @@ public class ConfigurationController : ControllerBase
     {
         try
         {
+            _logger.LogInformation("Getting all configurations");
             var allValues = _configurationService.GetAllValues();
+            _logger.LogInformation("Retrieved {Count} configurations", allValues.Count);
             return Ok(allValues);
         }
         catch (Exception ex)

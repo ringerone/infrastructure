@@ -1,0 +1,45 @@
+# Build artifacts
+**/bin/
+**/obj/
+**/node_modules/
+**/dist/
+**/.angular/
+
+# IDE files
+**/.vs/
+**/.vscode/
+**/.idea/
+*.user
+*.suo
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Documentation
+*.md
+!README.md
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test files
+**/test/
+**/tests/
+**/*.test.*
+**/*.spec.*
+
+# Coverage
+coverage/
+.nyc_output/
+

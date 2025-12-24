@@ -325,7 +325,10 @@ public class MongoDbDataAccess : IDataAccess
         if (idProperty != null)
         {
             var value = idProperty.GetValue(entity);
-            return value?.ToString() ?? string.Empty;
+            if (value != null)
+            {
+                return value.ToString() ?? string.Empty;
+            }
         }
         
         return string.Empty;

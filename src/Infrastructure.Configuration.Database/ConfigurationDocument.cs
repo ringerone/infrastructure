@@ -1,4 +1,6 @@
 using Infrastructure.Configuration;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Infrastructure.Configuration.Database;
 
@@ -7,7 +9,9 @@ namespace Infrastructure.Configuration.Database;
 /// </summary>
 public class ConfigurationDocument
 {
-    public string Id { get; set; } = string.Empty;
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string? Id { get; set; }
     public string Key { get; set; } = string.Empty;
     public object Value { get; set; } = default!;
     public ConfigurationScope Scope { get; set; }
@@ -36,7 +40,7 @@ public class ConfigurationDocument
     {
         return new ConfigurationDocument
         {
-            Id = id ?? string.Empty,
+            Id = !string.IsNullOrEmpty(id) ? id : null,
             Key = entry.Key,
             Value = entry.Value,
             Scope = entry.Scope,
@@ -54,7 +58,9 @@ public class ConfigurationDocument
 /// </summary>
 public class FeatureFlagDocument
 {
-    public string Id { get; set; } = string.Empty;
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string? Id { get; set; }
     public string Name { get; set; } = string.Empty;
     public bool Enabled { get; set; }
     public ConfigurationScope Scope { get; set; }
@@ -89,7 +95,7 @@ public class FeatureFlagDocument
     {
         return new FeatureFlagDocument
         {
-            Id = id ?? string.Empty,
+            Id = !string.IsNullOrEmpty(id) ? id : null,
             Name = flag.Name,
             Enabled = flag.Enabled,
             Scope = flag.Scope,

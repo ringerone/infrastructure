@@ -235,6 +235,7 @@ public class ConfigurationService : IConfigurationService
     {
         return new Dictionary<ConfigurationScope, string?>
         {
+            [ConfigurationScope.Global] = null,
             [ConfigurationScope.Environment] = _environment,
             [ConfigurationScope.Region] = _region,
             [ConfigurationScope.Tenant] = _tenantContextAccessor.CurrentTenant?.TenantId,

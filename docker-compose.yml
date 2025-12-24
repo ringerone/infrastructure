@@ -1,0 +1,179 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: infrastructure-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=ConfigurationDb
+    networks:
+      - infrastructure-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  api:
+    build:
+      context: .
+      dockerfile: apis/Infrastructure.Configuration.Api/Dockerfile
+    container_name: infrastructure-api
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - MongoDb__ConnectionString=mongodb://mongodb:27017
+      - MongoDb__DatabaseName=ConfigurationDb
+      - Region=us-east-1
+      - OpenTelemetry__OtlpEndpoint=http://otel-collector:4317
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      otel-collector:
+        condition: service_started
+    networks:
+      - infrastructure-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  ui:
+    build:
+      context: ./ui/Infrastructure.Configuration.UI
+      dockerfile: Dockerfile
+      args:
+        API_URL: http://localhost:8080/api
+    container_name: infrastructure-ui
+    ports:
+      - "4200:80"
+    depends_on:
+      - api
+    networks:
+      - infrastructure-network
+
+  # OpenTelemetry Collector
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: infrastructure-otel-collector
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+      - /tmp:/tmp
+    ports:
+      - "4317:4317"   # OTLP gRPC receiver
+      - "4318:4318"   # OTLP HTTP receiver
+      - "8889:8889"   # Prometheus metrics endpoint
+    environment:
+      - DEPLOYMENT_ENVIRONMENT=Production
+    depends_on:
+      - loki
+      - prometheus
+      - tempo
+    networks:
+      - infrastructure-network
+    restart: unless-stopped
+
+  # Loki - Log aggregation
+  loki:
+    image: grafana/loki:latest
+    container_name: infrastructure-loki
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    volumes:
+      - loki-data:/loki
+    networks:
+      - infrastructure-network
+
+  # Promtail - Log shipper for Loki
+  promtail:
+    image: grafana/promtail:latest
+    container_name: infrastructure-promtail
+    volumes:
+      - ./promtail/promtail-config.yml:/etc/promtail/config.yml
+      - /tmp:/tmp:ro
+      - promtail-positions:/var/lib/promtail
+    command: -config.file=/etc/promtail/config.yml
+    depends_on:
+      - loki
+      - otel-collector
+    networks:
+      - infrastructure-network
+
+  # Prometheus - Metrics collection
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: infrastructure-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    networks:
+      - infrastructure-network
+
+  # Tempo - Distributed tracing
+  tempo:
+    image: grafana/tempo:latest
+    container_name: infrastructure-tempo
+    ports:
+      - "3200:3200"   # Tempo HTTP API
+    command: ["-config.file=/etc/tempo/tempo.yaml"]
+    volumes:
+      - ./tempo/tempo.yaml:/etc/tempo/tempo.yaml
+      - tempo-data:/var/tempo
+    networks:
+      - infrastructure-network
+
+  # Grafana - Visualization
+  grafana:
+    image: grafana/grafana:latest
+    container_name: infrastructure-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - loki
+      - prometheus
+      - tempo
+    networks:
+      - infrastructure-network
+
+volumes:
+  mongodb-data:
+    driver: local
+  loki-data:
+    driver: local
+  prometheus-data:
+    driver: local
+  tempo-data:
+    driver: local
+  grafana-data:
+    driver: local
+  promtail-positions:
+    driver: local
+
+networks:
+  infrastructure-network:
+    driver: bridge
+

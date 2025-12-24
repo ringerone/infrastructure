@@ -288,6 +288,12 @@ public
 tmp/
 temp/
 
+## Observability data
+prometheus-data/
+loki-data/
+tempo-data/
+grafana-data/
+
 ## Editor directories and files
 .vscode/*
 !.vscode/extensions.json

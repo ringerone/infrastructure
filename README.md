@@ -101,7 +101,21 @@ This solution follows all SOLID principles:
 - .NET 10.0 SDK
 - MongoDB (for data storage) - See [MongoDB Setup Guide](MONGODB.md)
 - Node.js and npm (for Angular UI)
-- Docker Desktop (for running MongoDB in a container)
+- Docker Desktop (for running MongoDB in a container or full deployment)
+
+### Docker Deployment
+
+For containerized deployment, see the [Docker Deployment Guide](DOCKER.md). This includes:
+- Dockerfiles for API and UI
+- Docker Compose configuration
+- Production deployment instructions
+
+### Observability and Logging
+
+For centralized logging, metrics, and tracing, see the [Logging and Observability Guide](LOGGING.md). This includes:
+- OpenTelemetry Collector setup
+- Grafana, Loki, Prometheus, and Tempo integration
+- Query examples and dashboard configuration
 
 ### MongoDB Setup
 

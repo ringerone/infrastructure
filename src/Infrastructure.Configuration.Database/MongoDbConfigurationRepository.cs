@@ -29,14 +29,12 @@ public class MongoDbConfigurationRepository : IConfigurationRepository
 
     public async Task<IEnumerable<ConfigurationEntry>> GetAllConfigurationsAsync(Dictionary<ConfigurationScope, string?> scopeIdentifiers, CancellationToken cancellationToken = default)
     {
-        // Build filter for all scopes
-        var filters = scopeIdentifiers.Select(kvp => BuildFilter(null, kvp.Key, kvp.Value));
-        // Combine filters with OR
-        var combinedFilter = new MongoDbFilterDefinition<ConfigurationDocument>(
-            Builders<ConfigurationDocument>.Filter.Or(filters.Select(f => (MongoDB.Driver.FilterDefinition<ConfigurationDocument>)f.ToDatabaseFilter())));
-
-        var documents = await _dataAccess.FindAsync<ConfigurationDocument>(combinedFilter, cancellationToken);
-        return documents.Select(d => d.ToConfigurationEntry());
+        // For GetAll, we want to return all configurations regardless of scope
+        // The scope filtering and resolution happens at the service layer
+        var allFilter = new MongoDbFilterDefinition<ConfigurationDocument>(
+            Builders<ConfigurationDocument>.Filter.Empty);
+        var allDocuments = await _dataAccess.FindAsync<ConfigurationDocument>(allFilter, cancellationToken);
+        return allDocuments.Select(d => d.ToConfigurationEntry());
     }
 
     public async Task SetConfigurationAsync(ConfigurationEntry entry, CancellationToken cancellationToken = default)
@@ -44,14 +42,17 @@ public class MongoDbConfigurationRepository : IConfigurationRepository
         var filter = BuildFilter(entry.Key, entry.Scope, entry.ScopeIdentifier);
         var existing = await _dataAccess.FindOneAsync<ConfigurationDocument>(filter, cancellationToken);
 
-        var document = ConfigurationDocument.FromConfigurationEntry(entry, existing?.Id);
-
         if (existing != null)
         {
+            // Update existing document
+            var document = ConfigurationDocument.FromConfigurationEntry(entry, existing.Id);
             await _dataAccess.UpdateAsync<ConfigurationDocument>(existing.Id, document, cancellationToken);
         }
         else
         {
+            // Insert new document - MongoDB will auto-generate _id
+            var document = ConfigurationDocument.FromConfigurationEntry(entry, null);
+            // Don't set Id - MongoDB will auto-generate it when Id is empty/default
             await _dataAccess.InsertAsync(document, cancellationToken);
         }
     }

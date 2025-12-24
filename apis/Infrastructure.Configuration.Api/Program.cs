@@ -31,13 +31,24 @@ builder.Services.AddMongoDbDataAccess(options =>
 
 // Configure logging and telemetry
 builder.Services.AddMemoryCache();
+
+// Get OTLP endpoint from configuration or use default
+var otlpEndpoint = builder.Configuration["OpenTelemetry:OtlpEndpoint"] 
+    ?? builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"] 
+    ?? "http://otel-collector:4317";
+
 LoggingBootstrap.ConfigureOpenTelemetry(builder.Services, new LoggingOptions
 {
     ServiceName = "Configuration.Api",
     ServiceVersion = "1.0.0",
     Environment = builder.Environment.EnvironmentName,
     EnableMultiTenancy = true,
-    EnableConsoleExporter = true
+    EnableConsoleExporter = true,
+    OtlpExporterOptions = new OtlpExporterOptions
+    {
+        Endpoint = new Uri(otlpEndpoint),
+        Headers = builder.Configuration["OpenTelemetry:OtlpHeaders"]
+    }
 });
 
 // Register configuration services
@@ -131,6 +142,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.MapHub<ConfigurationHub>("/hubs/configuration");
+
+// Health check endpoint
+app.MapGet("/health", () => Results.Ok(new { status = "healthy", timestamp = DateTime.UtcNow }))
+    .WithTags("Health");
 
 app.Run();
 

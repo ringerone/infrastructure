@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
+import { environment } from '../environments/environment';
 
 export interface Configuration {
   key: string;
@@ -23,7 +24,7 @@ export interface FeatureFlag {
   providedIn: 'root'
 })
 export class ConfigurationService {
-  private apiUrl = 'https://localhost:53012/api';
+  private apiUrl = environment.apiUrl;
   private hubConnection?: HubConnection;
   private configurationChanged$ = new Subject<Configuration>();
   private featureFlagChanged$ = new Subject<FeatureFlag>();
