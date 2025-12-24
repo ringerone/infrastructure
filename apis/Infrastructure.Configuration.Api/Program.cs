@@ -14,7 +14,10 @@ builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
-        options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+        // Configure enum converter to handle string values (case-insensitive, exact enum name matching)
+        options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter(
+            namingPolicy: null, // Use exact enum name matching (Global, Environment, etc.)
+            allowIntegerValues: false));
     });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -67,6 +70,12 @@ builder.Services.AddScoped<IFeatureFlagRepository>(sp =>
     return new MongoDbFeatureFlagRepository(factory);
 });
 
+builder.Services.AddScoped<ITenantRepository>(sp =>
+{
+    var factory = sp.GetRequiredService<IDataAccessFactory>();
+    return new MongoDbTenantRepository(factory);
+});
+
 builder.Services.AddScoped<IConfigurationService>(sp =>
 {
     var repository = sp.GetRequiredService<IConfigurationRepository>();
@@ -103,6 +112,12 @@ builder.Services.AddScoped<IFeatureFlagService>(sp =>
         region,
         memoryCache,
         TimeSpan.FromMinutes(5));
+});
+
+builder.Services.AddScoped<ITenantService>(sp =>
+{
+    var repository = sp.GetRequiredService<ITenantRepository>();
+    return new TenantService(repository);
 });
 
 // Add SignalR for WebSocket pub/sub

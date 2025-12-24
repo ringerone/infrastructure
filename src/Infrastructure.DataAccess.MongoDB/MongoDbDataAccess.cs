@@ -83,6 +83,48 @@ public class MongoDbDataAccess : IDataAccess
         }
     }
 
+    public async Task<(IEnumerable<T> Items, long TotalCount)> FindPagedAsync<T>(
+        FilterDefinition<T> filter,
+        int pageNumber,
+        int pageSize,
+        CancellationToken cancellationToken = default) where T : class
+    {
+        using var activity = _activitySource.StartActivity("MongoDB.FindPaged");
+        activity?.SetTag("db.operation", "find_paged");
+        activity?.SetTag("db.collection", GetCollectionName<T>());
+        activity?.SetTag("db.page_number", pageNumber);
+        activity?.SetTag("db.page_size", pageSize);
+
+        try
+        {
+            var collection = GetCollection<T>();
+            var dbFilter = filter.ToDatabaseFilter();
+            var mongoFilter = dbFilter is MongoDBDriver.FilterDefinition<T> mongoDbFilter 
+                ? mongoDbFilter 
+                : MongoDBDriver.Builders<T>.Filter.Empty;
+            
+            // Get total count
+            var totalCount = await collection.CountDocumentsAsync(mongoFilter, cancellationToken: cancellationToken);
+            
+            // Get paginated results
+            var results = await collection
+                .Find(mongoFilter)
+                .Skip((pageNumber - 1) * pageSize)
+                .Limit(pageSize)
+                .ToListAsync(cancellationToken);
+            
+            activity?.SetTag("db.result_count", results.Count);
+            activity?.SetTag("db.total_count", totalCount);
+            return (results, totalCount);
+        }
+        catch (Exception ex)
+        {
+            activity?.SetStatus(ActivityStatusCode.Error, ex.Message);
+            _logger.LogError(ex, "Error finding paginated entities");
+            throw;
+        }
+    }
+
     public async Task<T?> FindOneAsync<T>(FilterDefinition<T> filter, CancellationToken cancellationToken = default) where T : class
     {
         using var activity = _activitySource.StartActivity("MongoDB.FindOne");

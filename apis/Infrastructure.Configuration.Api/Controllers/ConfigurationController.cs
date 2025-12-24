@@ -1,5 +1,6 @@
 using Infrastructure.Configuration;
 using Infrastructure.Configuration.Api;
+using Infrastructure.Configuration.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -28,16 +29,59 @@ public class ConfigurationController : ControllerBase
     {
         try
         {
-            if (scope.HasValue)
+            _logger.LogInformation("Getting configuration: {Key}", key);
+            
+            // Get the configuration from repository with full information
+            var repository = HttpContext.RequestServices.GetRequiredService<Infrastructure.Configuration.IConfigurationRepository>();
+            var tenantAccessor = HttpContext.RequestServices.GetRequiredService<Infrastructure.MultiTenancy.ITenantContextAccessor>();
+            var environment = HttpContext.RequestServices.GetRequiredService<Microsoft.Extensions.Hosting.IHostEnvironment>();
+            var region = HttpContext.RequestServices.GetRequiredService<Microsoft.Extensions.Configuration.IConfiguration>()["Region"];
+            
+            // Try to find the configuration by key across all scopes
+            var scopes = new[]
             {
-                var value = _configurationService.GetValue<object>(key, scope.Value);
-                return Ok(new { Key = key, Value = value, Scope = scope.Value });
-            }
-            else
+                Infrastructure.Configuration.ConfigurationScope.User,
+                Infrastructure.Configuration.ConfigurationScope.Tenant,
+                Infrastructure.Configuration.ConfigurationScope.Region,
+                Infrastructure.Configuration.ConfigurationScope.Environment,
+                Infrastructure.Configuration.ConfigurationScope.Global
+            };
+            
+            Infrastructure.Configuration.ConfigurationEntry? foundEntry = null;
+            foreach (var searchScope in scopes)
             {
-                var value = _configurationService.GetValue<object>(key);
-                return Ok(new { Key = key, Value = value });
+                string? searchScopeIdentifier = searchScope switch
+                {
+                    Infrastructure.Configuration.ConfigurationScope.Environment => environment.EnvironmentName,
+                    Infrastructure.Configuration.ConfigurationScope.Region => region,
+                    Infrastructure.Configuration.ConfigurationScope.Tenant => tenantAccessor.CurrentTenant?.TenantId,
+                    _ => null
+                };
+                
+                foundEntry = await repository.GetConfigurationAsync(key, searchScope, searchScopeIdentifier);
+                if (foundEntry != null)
+                    break;
             }
+            
+            // If not found by scope, try to find any configuration with this key (for editing)
+            if (foundEntry == null)
+            {
+                var allConfigs = await repository.GetAllConfigurationsAsync(new Dictionary<Infrastructure.Configuration.ConfigurationScope, string?>());
+                foundEntry = allConfigs.FirstOrDefault(c => c.Key == key);
+            }
+            
+            if (foundEntry == null)
+            {
+                return NotFound(new { Error = $"Configuration '{key}' not found" });
+            }
+            
+            return Ok(new
+            {
+                key = foundEntry.Key,
+                value = foundEntry.Value,
+                scope = foundEntry.Scope.ToString(),
+                scopeIdentifier = foundEntry.ScopeIdentifier
+            });
         }
         catch (Exception ex)
         {
@@ -47,14 +91,73 @@ public class ConfigurationController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetAllConfigurations()
+    public async Task<IActionResult> GetAllConfigurations(
+        [FromQuery] ConfigurationScope? scope,
+        [FromQuery] string? scopeIdentifier,
+        [FromQuery] int pageNumber = 1,
+        [FromQuery] int pageSize = 10,
+        [FromQuery] string? search = null)
     {
         try
         {
-            _logger.LogInformation("Getting all configurations");
-            var allValues = _configurationService.GetAllValues();
-            _logger.LogInformation("Retrieved {Count} configurations", allValues.Count);
-            return Ok(allValues);
+            _logger.LogInformation("Getting configurations - Scope: {Scope}, ScopeIdentifier: {ScopeIdentifier}, Page: {PageNumber}, PageSize: {PageSize}, Search: {Search}", 
+                scope, scopeIdentifier, pageNumber, pageSize, search);
+            
+            // Validate pagination parameters
+            if (pageNumber < 1) pageNumber = 1;
+            if (pageSize < 1 || pageSize > 100) pageSize = 10;
+            
+            // Get all configuration entries with scope information
+            var repository = HttpContext.RequestServices.GetRequiredService<Infrastructure.Configuration.IConfigurationRepository>();
+            var tenantAccessor = HttpContext.RequestServices.GetRequiredService<Infrastructure.MultiTenancy.ITenantContextAccessor>();
+            var environment = HttpContext.RequestServices.GetRequiredService<Microsoft.Extensions.Hosting.IHostEnvironment>();
+            var region = HttpContext.RequestServices.GetRequiredService<Microsoft.Extensions.Configuration.IConfiguration>()["Region"];
+            
+            var scopeIdentifiers = new Dictionary<Infrastructure.Configuration.ConfigurationScope, string?>
+            {
+                [Infrastructure.Configuration.ConfigurationScope.Global] = null,
+                [Infrastructure.Configuration.ConfigurationScope.Environment] = environment.EnvironmentName,
+                [Infrastructure.Configuration.ConfigurationScope.Region] = region,
+                [Infrastructure.Configuration.ConfigurationScope.Tenant] = tenantAccessor.CurrentTenant?.TenantId,
+                [Infrastructure.Configuration.ConfigurationScope.User] = null
+            };
+            
+            // Get paginated results with filters applied at database level
+            var (allEntries, totalCount) = await repository.GetAllConfigurationsPagedAsync(
+                scopeIdentifiers,
+                pageNumber,
+                pageSize,
+                search,
+                scope,
+                scopeIdentifier);
+            
+            // Return as dictionary with key -> { value, scope, scopeIdentifier }
+            var result = new Dictionary<string, object>();
+            foreach (var entry in allEntries)
+            {
+                if (!result.ContainsKey(entry.Key))
+                {
+                    result[entry.Key] = new
+                    {
+                        value = entry.Value,
+                        scope = entry.Scope.ToString(),
+                        scopeIdentifier = entry.ScopeIdentifier
+                    };
+                }
+            }
+            
+            // Return paginated result
+            var pagedResult = new Models.PagedResult<object>
+            {
+                Items = result.Select(kvp => new { key = kvp.Key, value = kvp.Value }),
+                TotalCount = totalCount,
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            };
+            
+            _logger.LogInformation("Retrieved {Count} configurations (Page {PageNumber} of {TotalPages})", 
+                totalCount, pageNumber, pagedResult.TotalPages);
+            return Ok(pagedResult);
         }
         catch (Exception ex)
         {
@@ -68,6 +171,33 @@ public class ConfigurationController : ControllerBase
     {
         try
         {
+            // Validation
+            if (string.IsNullOrWhiteSpace(request.Key))
+            {
+                return BadRequest(new { Error = "Key is required" });
+            }
+
+            if (request.Value == null)
+            {
+                return BadRequest(new { Error = "Value is required" });
+            }
+
+            // Validate scope
+            if (!Enum.IsDefined(typeof(ConfigurationScope), request.Scope))
+            {
+                return BadRequest(new { Error = "Invalid scope value" });
+            }
+
+            // Validate scope identifier for Global scope
+            if (request.Scope == ConfigurationScope.Global && !string.IsNullOrEmpty(request.ScopeIdentifier))
+            {
+                _logger.LogWarning("Global scope should not have a scope identifier. Ignoring scope identifier.");
+                request.ScopeIdentifier = null;
+            }
+
+            _logger.LogInformation("Received SetConfiguration request: Key={Key}, Scope={Scope}, ScopeIdentifier={ScopeIdentifier}", 
+                request.Key, request.Scope, request.ScopeIdentifier);
+
             // Convert JsonElement to actual value type for MongoDB serialization
             object value = request.Value;
             if (value is System.Text.Json.JsonElement jsonElement)
@@ -124,10 +254,51 @@ public class SetConfigurationRequest
     public object Value { get; set; } = default!;
     
     [System.Text.Json.Serialization.JsonPropertyName("scope")]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ConfigurationScopeJsonConverter))]
     public ConfigurationScope Scope { get; set; }
     
     [System.Text.Json.Serialization.JsonPropertyName("scopeIdentifier")]
     public string? ScopeIdentifier { get; set; }
+}
+
+/// <summary>
+/// Custom JSON converter for ConfigurationScope that properly handles string values
+/// </summary>
+public class ConfigurationScopeJsonConverter : System.Text.Json.Serialization.JsonConverter<ConfigurationScope>
+{
+    public override ConfigurationScope Read(ref System.Text.Json.Utf8JsonReader reader, Type typeToConvert, System.Text.Json.JsonSerializerOptions options)
+    {
+        if (reader.TokenType == System.Text.Json.JsonTokenType.String)
+        {
+            var stringValue = reader.GetString();
+            if (Enum.TryParse<ConfigurationScope>(stringValue, ignoreCase: false, out var result))
+            {
+                return result;
+            }
+            // If case-insensitive parse fails, try case-insensitive
+            if (Enum.TryParse<ConfigurationScope>(stringValue, ignoreCase: true, out result))
+            {
+                return result;
+            }
+            throw new System.Text.Json.JsonException($"Invalid ConfigurationScope value: '{stringValue}'. Valid values are: Global, Environment, Region, Tenant, User");
+        }
+        else if (reader.TokenType == System.Text.Json.JsonTokenType.Number)
+        {
+            var intValue = reader.GetInt32();
+            if (Enum.IsDefined(typeof(ConfigurationScope), intValue))
+            {
+                return (ConfigurationScope)intValue;
+            }
+            throw new System.Text.Json.JsonException($"Invalid ConfigurationScope numeric value: {intValue}");
+        }
+        
+        throw new System.Text.Json.JsonException($"Unexpected token type for ConfigurationScope: {reader.TokenType}. Expected String or Number.");
+    }
+
+    public override void Write(System.Text.Json.Utf8JsonWriter writer, ConfigurationScope value, System.Text.Json.JsonSerializerOptions options)
+    {
+        writer.WriteStringValue(value.ToString());
+    }
 }
 
 /// <summary>

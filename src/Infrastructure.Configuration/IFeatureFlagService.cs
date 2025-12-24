@@ -88,6 +88,14 @@ public interface IFeatureFlagRepository
 {
     Task<FeatureFlag?> GetFeatureFlagAsync(string name, ConfigurationScope scope, string? scopeIdentifier, CancellationToken cancellationToken = default);
     Task<IEnumerable<FeatureFlag>> GetAllFeatureFlagsAsync(Dictionary<ConfigurationScope, string?> scopeIdentifiers, CancellationToken cancellationToken = default);
+    Task<(IEnumerable<FeatureFlag> Items, long TotalCount)> GetAllFeatureFlagsPagedAsync(
+        Dictionary<ConfigurationScope, string?> scopeIdentifiers,
+        int pageNumber,
+        int pageSize,
+        string? searchTerm = null,
+        ConfigurationScope? scopeFilter = null,
+        string? scopeIdentifierFilter = null,
+        CancellationToken cancellationToken = default);
     Task SetFeatureFlagAsync(FeatureFlag flag, CancellationToken cancellationToken = default);
     Task DeleteFeatureFlagAsync(string name, ConfigurationScope scope, string? scopeIdentifier, CancellationToken cancellationToken = default);
 }

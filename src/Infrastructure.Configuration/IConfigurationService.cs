@@ -72,6 +72,14 @@ public interface IConfigurationRepository
 {
     Task<ConfigurationEntry?> GetConfigurationAsync(string key, ConfigurationScope scope, string? scopeIdentifier, CancellationToken cancellationToken = default);
     Task<IEnumerable<ConfigurationEntry>> GetAllConfigurationsAsync(Dictionary<ConfigurationScope, string?> scopeIdentifiers, CancellationToken cancellationToken = default);
+    Task<(IEnumerable<ConfigurationEntry> Items, long TotalCount)> GetAllConfigurationsPagedAsync(
+        Dictionary<ConfigurationScope, string?> scopeIdentifiers,
+        int pageNumber,
+        int pageSize,
+        string? searchTerm = null,
+        ConfigurationScope? scopeFilter = null,
+        string? scopeIdentifierFilter = null,
+        CancellationToken cancellationToken = default);
     Task SetConfigurationAsync(ConfigurationEntry entry, CancellationToken cancellationToken = default);
     Task DeleteConfigurationAsync(string key, ConfigurationScope scope, string? scopeIdentifier, CancellationToken cancellationToken = default);
 }

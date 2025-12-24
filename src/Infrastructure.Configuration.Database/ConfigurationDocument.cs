@@ -61,16 +61,38 @@ public class FeatureFlagDocument
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
+    
+    [BsonElement("Name")]
     public string Name { get; set; } = string.Empty;
+    
+    [BsonElement("Enabled")]
     public bool Enabled { get; set; }
+    
+    [BsonElement("Scope")]
     public ConfigurationScope Scope { get; set; }
+    
+    [BsonElement("ScopeIdentifier")]
     public string? ScopeIdentifier { get; set; }
+    
+    [BsonElement("RolloutPercentage")]
     public int RolloutPercentage { get; set; } = 100;
+    
+    [BsonElement("Variant")]
     public string? Variant { get; set; }
+    
+    [BsonElement("Rules")]
     public List<FeatureFlagRuleDocument> Rules { get; set; } = new();
+    
+    [BsonElement("CreatedAt")]
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    
+    [BsonElement("UpdatedAt")]
     public DateTime? UpdatedAt { get; set; }
+    
+    [BsonElement("CreatedBy")]
     public string? CreatedBy { get; set; }
+    
+    [BsonElement("UpdatedBy")]
     public string? UpdatedBy { get; set; }
 
     public FeatureFlag ToFeatureFlag()
@@ -137,6 +159,91 @@ public class FeatureFlagRuleDocument
             Attribute = rule.Attribute,
             Operator = rule.Operator,
             Value = rule.Value
+        };
+    }
+}
+
+/// <summary>
+/// MongoDB document for tenants
+/// </summary>
+public class TenantDocument
+{
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string? Id { get; set; }
+    
+    [BsonElement("TenantIdentifier")]
+    public string TenantIdentifier { get; set; } = string.Empty;
+    
+    [BsonElement("Name")]
+    public string Name { get; set; } = string.Empty;
+    
+    [BsonElement("Status")]
+    public TenantStatus Status { get; set; } = TenantStatus.Pending;
+    
+    [BsonElement("Comments")]
+    public string? Comments { get; set; }
+    
+    [BsonElement("SalesTerms")]
+    public string? SalesTerms { get; set; }
+    
+    [BsonElement("ContactEmail")]
+    public string? ContactEmail { get; set; }
+    
+    [BsonElement("ContactPhone")]
+    public string? ContactPhone { get; set; }
+    
+    [BsonElement("ContactName")]
+    public string? ContactName { get; set; }
+    
+    [BsonElement("CreatedAt")]
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    
+    [BsonElement("UpdatedAt")]
+    public DateTime? UpdatedAt { get; set; }
+    
+    [BsonElement("CreatedBy")]
+    public string? CreatedBy { get; set; }
+    
+    [BsonElement("UpdatedBy")]
+    public string? UpdatedBy { get; set; }
+
+    public Tenant ToTenant()
+    {
+        return new Tenant
+        {
+            TenantIdentifier = TenantIdentifier,
+            Name = Name,
+            Status = Status,
+            Comments = Comments,
+            SalesTerms = SalesTerms,
+            ContactEmail = ContactEmail,
+            ContactPhone = ContactPhone,
+            ContactName = ContactName,
+            CreatedAt = CreatedAt,
+            UpdatedAt = UpdatedAt,
+            CreatedBy = CreatedBy,
+            UpdatedBy = UpdatedBy
+        };
+    }
+
+    public static TenantDocument FromTenant(Tenant tenant, string? id = null)
+    {
+        return new TenantDocument
+        {
+            Id = !string.IsNullOrEmpty(id) ? id : null,
+            TenantIdentifier = tenant.TenantIdentifier,
+            Name = tenant.Name,
+            Status = tenant.Status,
+            Comments = tenant.Comments,
+            SalesTerms = tenant.SalesTerms,
+            ContactEmail = tenant.ContactEmail,
+            ContactPhone = tenant.ContactPhone,
+            ContactName = tenant.ContactName,
+            CreatedAt = tenant.CreatedAt,
+            UpdatedAt = tenant.UpdatedAt,
+            CreatedBy = tenant.CreatedBy,
+            UpdatedBy = tenant.UpdatedBy
         };
     }
 }

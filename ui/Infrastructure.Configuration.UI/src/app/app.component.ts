@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
         <nav>
           <a routerLink="/configurations" routerLinkActive="active">Configurations</a>
           <a routerLink="/feature-flags" routerLinkActive="active">Feature Flags</a>
+          <a routerLink="/tenants" routerLinkActive="active">Tenants</a>
         </nav>
       </header>
       <main>

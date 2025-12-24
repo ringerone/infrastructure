@@ -20,6 +20,31 @@ export interface FeatureFlag {
   variant?: string;
 }
 
+export interface PagedResult<T> {
+  items: T[];
+  totalCount: number;
+  pageNumber: number;
+  pageSize: number;
+  totalPages: number;
+  hasPreviousPage: boolean;
+  hasNextPage: boolean;
+}
+
+export interface Tenant {
+  tenantIdentifier: string;
+  name: string;
+  status: 'Active' | 'Inactive' | 'Pending' | 'Suspended';
+  comments?: string;
+  salesTerms?: string;
+  contactEmail?: string;
+  contactPhone?: string;
+  contactName?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: string;
+  updatedBy?: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -54,12 +79,15 @@ export class ConfigurationService {
     }
   }
 
-  getConfigurations(scope?: string, scopeIdentifier?: string): Observable<Record<string, any>> {
+  getConfigurations(scope?: string, scopeIdentifier?: string, pageNumber: number = 1, pageSize: number = 10, search?: string): Observable<any> {
     let params = new HttpParams();
     if (scope) params = params.set('scope', scope);
     if (scopeIdentifier) params = params.set('scopeIdentifier', scopeIdentifier);
+    params = params.set('pageNumber', pageNumber.toString());
+    params = params.set('pageSize', pageSize.toString());
+    if (search) params = params.set('search', search);
 
-    return this.http.get<Record<string, any>>(`${this.apiUrl}/configuration`, { params });
+    return this.http.get<any>(`${this.apiUrl}/configuration`, { params });
   }
 
   getConfiguration(key: string, scope?: string, scopeIdentifier?: string): Observable<any> {
@@ -79,8 +107,15 @@ export class ConfigurationService {
     });
   }
 
-  getFeatureFlags(): Observable<Record<string, boolean>> {
-    return this.http.get<Record<string, boolean>>(`${this.apiUrl}/featureflag`);
+  getFeatureFlags(scope?: string, scopeIdentifier?: string, pageNumber: number = 1, pageSize: number = 10, search?: string): Observable<any> {
+    let params = new HttpParams();
+    if (scope) params = params.set('scope', scope);
+    if (scopeIdentifier) params = params.set('scopeIdentifier', scopeIdentifier);
+    params = params.set('pageNumber', pageNumber.toString());
+    params = params.set('pageSize', pageSize.toString());
+    if (search) params = params.set('search', search);
+
+    return this.http.get<any>(`${this.apiUrl}/featureflag`, { params });
   }
 
   getFeatureFlag(name: string): Observable<any> {
@@ -97,6 +132,33 @@ export class ConfigurationService {
 
   onFeatureFlagChanged(): Observable<FeatureFlag> {
     return this.featureFlagChanged$.asObservable();
+  }
+
+  getTenants(
+    pageNumber: number,
+    pageSize: number,
+    search?: string,
+    status?: string
+  ): Observable<PagedResult<Tenant>> {
+    let params = new HttpParams()
+      .set('pageNumber', pageNumber.toString())
+      .set('pageSize', pageSize.toString());
+    if (search) params = params.set('search', search);
+    if (status) params = params.set('status', status);
+
+    return this.http.get<PagedResult<Tenant>>(`${this.apiUrl}/tenant`, { params });
+  }
+
+  getTenant(tenantIdentifier: string): Observable<Tenant> {
+    return this.http.get<Tenant>(`${this.apiUrl}/tenant/${tenantIdentifier}`);
+  }
+
+  setTenant(tenant: Tenant): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/tenant`, tenant);
+  }
+
+  deleteTenant(tenantIdentifier: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/tenant/${tenantIdentifier}`);
   }
 }
 

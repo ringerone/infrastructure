@@ -19,6 +19,15 @@ public interface IDataAccess
     Task<IEnumerable<T>> FindAsync<T>(FilterDefinition<T> filter, CancellationToken cancellationToken = default) where T : class;
 
     /// <summary>
+    /// Gets paginated entities matching a filter
+    /// </summary>
+    Task<(IEnumerable<T> Items, long TotalCount)> FindPagedAsync<T>(
+        FilterDefinition<T> filter,
+        int pageNumber,
+        int pageSize,
+        CancellationToken cancellationToken = default) where T : class;
+
+    /// <summary>
     /// Gets a single entity matching a filter
     /// </summary>
     Task<T?> FindOneAsync<T>(FilterDefinition<T> filter, CancellationToken cancellationToken = default) where T : class;
