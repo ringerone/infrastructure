@@ -1,5 +1,6 @@
 using Infrastructure.Configuration;
 using Infrastructure.Configuration.Api.Models;
+using Infrastructure.MultiTenancy;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 

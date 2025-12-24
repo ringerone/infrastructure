@@ -1,8 +1,6 @@
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics;
 
 namespace Infrastructure.MultiTenancy;
 
@@ -137,65 +135,6 @@ public class TenantMiddleware
 
         // Basic validation - can be extended
         return value.Length > 0 && value.Length < 100;
-    }
-}
-
-/// <summary>
-/// Service for resolving tenant information including database connections
-/// </summary>
-public interface ITenantResolver
-{
-    Task<TenantContext?> ResolveTenantAsync(string tenantId, CancellationToken cancellationToken = default);
-}
-
-/// <summary>
-/// Extension methods for registering tenant middleware
-/// </summary>
-public static class TenantMiddlewareExtensions
-{
-    public static IApplicationBuilder UseTenantContext(this IApplicationBuilder app)
-    {
-        return app.UseMiddleware<TenantMiddleware>();
-    }
-
-    public static IServiceCollection AddMultiTenancy(this IServiceCollection services)
-    {
-        services.AddSingleton<ITenantContextAccessor, TenantContextAccessor>();
-        services.AddScoped<ITenantResolver, DefaultTenantResolver>();
-        return services;
-    }
-
-    public static IServiceCollection AddMultiTenancy<TTenantResolver>(this IServiceCollection services) 
-        where TTenantResolver : class, ITenantResolver
-    {
-        services.AddSingleton<ITenantContextAccessor, TenantContextAccessor>();
-        services.AddScoped<ITenantResolver, TTenantResolver>();
-        return services;
-    }
-}
-
-/// <summary>
-/// Default tenant resolver - can be replaced with custom implementation
-/// </summary>
-public class DefaultTenantResolver : ITenantResolver
-{
-    private readonly ILogger<DefaultTenantResolver> _logger;
-
-    public DefaultTenantResolver(ILogger<DefaultTenantResolver> logger)
-    {
-        _logger = logger;
-    }
-
-    public Task<TenantContext?> ResolveTenantAsync(string tenantId, CancellationToken cancellationToken = default)
-    {
-        // Default implementation - should be replaced with actual tenant store lookup
-        _logger.LogWarning("Using default tenant resolver. Implement ITenantResolver for production use.");
-        
-        return Task.FromResult<TenantContext?>(new TenantContext
-        {
-            TenantId = tenantId,
-            TenantName = tenantId
-        });
     }
 }
 

@@ -1,6 +1,7 @@
 using Infrastructure.Configuration;
 using Infrastructure.DataAccess;
 using Infrastructure.DataAccess.MongoDB;
+using Infrastructure.MultiTenancy;
 using MongoDB.Bson;
 using MongoDB.Driver;
 

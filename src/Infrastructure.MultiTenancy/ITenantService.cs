@@ -1,4 +1,4 @@
-namespace Infrastructure.Configuration;
+namespace Infrastructure.MultiTenancy;
 
 /// <summary>
 /// Service for managing tenants

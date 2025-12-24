@@ -1,4 +1,5 @@
 using Infrastructure.Configuration;
+using Infrastructure.MultiTenancy;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 

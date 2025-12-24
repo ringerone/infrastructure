@@ -1,3 +1,5 @@
+using Infrastructure.MultiTenancy;
+
 namespace Infrastructure.Configuration;
 
 /// <summary>
