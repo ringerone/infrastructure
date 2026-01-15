@@ -65,11 +65,11 @@ public class ConsoleOidcLogger : IOidcLogger
 /// <summary>
 /// Serilog-based logger implementation using standard ILogger.
 /// </summary>
-public class SerilogOidcLogger : IOidcLogger
+public class SerilogLogger : IOidcLogger
 {
     private readonly ILogger _logger;
 
-    public SerilogOidcLogger(ILogger logger)
+    public SerilogLogger(ILogger logger)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
