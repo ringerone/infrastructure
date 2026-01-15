@@ -6,6 +6,8 @@
 **/*/obj/
 bin/
 obj/
+# Comprehensive obj folder ignore (case-insensitive, any location)
+**/[Oo]bj/
 *.dll
 *.exe
 *.pdb
@@ -52,6 +54,7 @@ bld/
 !**/packages/build/
 *.nuget.props
 *.nuget.targets
+*.nuget.g
 project.lock.json
 project.fragment.lock.json
 artifacts/

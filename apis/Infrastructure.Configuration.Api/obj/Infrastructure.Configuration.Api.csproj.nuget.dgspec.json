@@ -91,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
@@ -587,7 +587,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -921,15 +921,15 @@
           "dependencies": {
             "Microsoft.Extensions.Caching.Memory": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             },
             "MongoDB.Bson": {
               "target": "Package",
@@ -952,7 +952,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1289,7 +1289,7 @@
           "dependencies": {
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             },
             "MongoDB.Driver": {
               "target": "Package",
@@ -1312,7 +1312,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1656,7 +1656,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1990,11 +1990,11 @@
           "dependencies": {
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             },
             "Microsoft.Extensions.Logging": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             },
             "OpenTelemetry": {
               "target": "Package",
@@ -2041,7 +2041,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -2368,19 +2368,19 @@
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.OpenIdConnect": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             },
             "Microsoft.AspNetCore.Http.Abstractions": {
               "target": "Package",
-              "version": "[2.3.0, )"
+              "version": "[2.3.9, )"
             },
             "Microsoft.Extensions.Logging": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             },
             "System.Diagnostics.DiagnosticSource": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             }
           },
           "imports": [
@@ -2399,7 +2399,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -2734,11 +2734,11 @@
             },
             "System.Diagnostics.DiagnosticSource": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             },
             "System.Diagnostics.PerformanceCounter": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             }
           },
           "imports": [
@@ -2757,7 +2757,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

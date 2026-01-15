@@ -15,7 +15,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authentication.OpenIdConnect/10.0.1": {
+      "Microsoft.AspNetCore.Authentication.OpenIdConnect/10.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "8.0.1"
@@ -414,10 +414,10 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "System.Configuration.ConfigurationManager/10.0.1": {
+      "System.Configuration.ConfigurationManager/10.0.2": {
         "type": "package",
         "dependencies": {
-          "System.Security.Cryptography.ProtectedData": "10.0.1"
+          "System.Security.Cryptography.ProtectedData": "10.0.2"
         },
         "compile": {
           "lib/net10.0/System.Configuration.ConfigurationManager.dll": {
@@ -433,10 +433,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Diagnostics.PerformanceCounter/10.0.1": {
+      "System.Diagnostics.PerformanceCounter/10.0.2": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "10.0.1"
+          "System.Configuration.ConfigurationManager": "10.0.2"
         },
         "compile": {
           "lib/net10.0/System.Diagnostics.PerformanceCounter.dll": {
@@ -475,7 +475,7 @@
           }
         }
       },
-      "System.Security.Cryptography.ProtectedData/10.0.1": {
+      "System.Security.Cryptography.ProtectedData/10.0.2": {
         "type": "package",
         "compile": {
           "lib/net10.0/System.Security.Cryptography.ProtectedData.dll": {
@@ -585,7 +585,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication.OpenIdConnect": "10.0.1"
+          "Microsoft.AspNetCore.Authentication.OpenIdConnect": "10.0.2"
         },
         "compile": {
           "bin/placeholder/Infrastructure.MultiTenancy.dll": {}
@@ -600,7 +600,7 @@
         "dependencies": {
           "Infrastructure.MultiTenancy": "1.0.0",
           "OpenTelemetry": "1.14.0",
-          "System.Diagnostics.PerformanceCounter": "10.0.1"
+          "System.Diagnostics.PerformanceCounter": "10.0.2"
         },
         "compile": {
           "bin/placeholder/Infrastructure.Telemetry.dll": {}
@@ -636,10 +636,10 @@
         "lib/netstandard2.1/DnsClient.xml"
       ]
     },
-    "Microsoft.AspNetCore.Authentication.OpenIdConnect/10.0.1": {
-      "sha512": "dUm1l7EvSBn3pUHphy+OSKBzZvhwkFCq12YAh8OJBM6/tFpo3HHoOGiOwEwC9ljJOyK+QwwdQJZuqwDXwK2WlQ==",
+    "Microsoft.AspNetCore.Authentication.OpenIdConnect/10.0.2": {
+      "sha512": "j/KTyoQ8n93kJodhjG2dwsnunp84tWmVUPyYvucJl/qguj9vrbzlIQOg2m8Ygp9/Cwr7wAsljPow9CjBgKQFzw==",
       "type": "package",
-      "path": "microsoft.aspnetcore.authentication.openidconnect/10.0.1",
+      "path": "microsoft.aspnetcore.authentication.openidconnect/10.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -648,7 +648,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net10.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll",
         "lib/net10.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.xml",
-        "microsoft.aspnetcore.authentication.openidconnect.10.0.1.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.openidconnect.10.0.2.nupkg.sha512",
         "microsoft.aspnetcore.authentication.openidconnect.nuspec"
       ]
     },
@@ -1452,10 +1452,10 @@
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
     },
-    "System.Configuration.ConfigurationManager/10.0.1": {
-      "sha512": "HfOAIlSA8OuaxBZD6xjsUWhtB0KdKSWEfRId8gSGveLUjuP6G8IxfiFgJNxaiRIEC1kx4pSvz3Em5xW/J6LLxA==",
+    "System.Configuration.ConfigurationManager/10.0.2": {
+      "sha512": "UpBPpVzF+xbB3GsBrraPvlYCwUiOhs+RLxnTMKLqDs2gNNaAtxQRlKjXfMV3zxE+hiQkGId5olZ+9tE6xXHdwQ==",
       "type": "package",
-      "path": "system.configuration.configurationmanager/10.0.1",
+      "path": "system.configuration.configurationmanager/10.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1476,15 +1476,15 @@
         "lib/net9.0/System.Configuration.ConfigurationManager.xml",
         "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll",
         "lib/netstandard2.0/System.Configuration.ConfigurationManager.xml",
-        "system.configuration.configurationmanager.10.0.1.nupkg.sha512",
+        "system.configuration.configurationmanager.10.0.2.nupkg.sha512",
         "system.configuration.configurationmanager.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Diagnostics.PerformanceCounter/10.0.1": {
-      "sha512": "5kYRbAdsUydb+FyNiQZu7PEgdyWSq+g3xdVzlV52k65jvRdkGQKzsxvmAetTzxiX3OigN7cpbu0ZZdpSNBw78Q==",
+    "System.Diagnostics.PerformanceCounter/10.0.2": {
+      "sha512": "aUW7WlSpuagd0rea9LSgMJ9c73aZ2FlzS3Mk4Aqfjz43sWBu0xcVfaBNoV0KOEWhrpk6tv1PV3xqSq82vsDfRA==",
       "type": "package",
-      "path": "system.diagnostics.performancecounter/10.0.1",
+      "path": "system.diagnostics.performancecounter/10.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1511,7 +1511,7 @@
         "runtimes/win/lib/net8.0/System.Diagnostics.PerformanceCounter.xml",
         "runtimes/win/lib/net9.0/System.Diagnostics.PerformanceCounter.dll",
         "runtimes/win/lib/net9.0/System.Diagnostics.PerformanceCounter.xml",
-        "system.diagnostics.performancecounter.10.0.1.nupkg.sha512",
+        "system.diagnostics.performancecounter.10.0.2.nupkg.sha512",
         "system.diagnostics.performancecounter.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -1539,10 +1539,10 @@
         "system.identitymodel.tokens.jwt.nuspec"
       ]
     },
-    "System.Security.Cryptography.ProtectedData/10.0.1": {
-      "sha512": "9SqHNq+lAjZeyPcm69FTQEjr+wsRYvkS3aW8yxoEndVYwDRkCrsP/44QPqpWHwzevoX26rkOoQ6kr7GZWngw2A==",
+    "System.Security.Cryptography.ProtectedData/10.0.2": {
+      "sha512": "me7W69hkjdu5EzHXCQSXv9OS3uAkMXT26oZuWTaabeoO5BPxSVuRVJ2FSfIW8xyGxBb6mKCE6ZKg7TLk3IzJBQ==",
       "type": "package",
-      "path": "system.security.cryptography.protecteddata/10.0.1",
+      "path": "system.security.cryptography.protecteddata/10.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1569,7 +1569,7 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "system.security.cryptography.protecteddata.10.0.1.nupkg.sha512",
+        "system.security.cryptography.protecteddata.10.0.2.nupkg.sha512",
         "system.security.cryptography.protecteddata.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -1729,7 +1729,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
