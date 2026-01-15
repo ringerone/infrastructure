@@ -69,7 +69,7 @@
           "dependencies": {
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.5.0, )"
+              "version": "[7.2.0, )"
             }
           },
           "imports": [
@@ -2370,15 +2370,7 @@
               "target": "Package",
               "version": "[10.0.2, )"
             },
-            "Microsoft.AspNetCore.Http.Abstractions": {
-              "target": "Package",
-              "version": "[2.3.9, )"
-            },
             "Microsoft.Extensions.Logging": {
-              "target": "Package",
-              "version": "[10.0.2, )"
-            },
-            "System.Diagnostics.DiagnosticSource": {
               "target": "Package",
               "version": "[10.0.2, )"
             }

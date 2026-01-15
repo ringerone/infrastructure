@@ -416,15 +416,15 @@
           "dependencies": {
             "Microsoft.Extensions.Caching.Memory": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             },
             "MongoDB.Bson": {
               "target": "Package",
@@ -784,7 +784,7 @@
           "dependencies": {
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             },
             "MongoDB.Driver": {
               "target": "Package",
@@ -1478,19 +1478,11 @@
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.OpenIdConnect": {
               "target": "Package",
-              "version": "[10.0.1, )"
-            },
-            "Microsoft.AspNetCore.Http.Abstractions": {
-              "target": "Package",
-              "version": "[2.3.0, )"
+              "version": "[10.0.2, )"
             },
             "Microsoft.Extensions.Logging": {
               "target": "Package",
-              "version": "[10.0.1, )"
-            },
-            "System.Diagnostics.DiagnosticSource": {
-              "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             }
           },
           "imports": [
@@ -1844,11 +1836,11 @@
             },
             "System.Diagnostics.DiagnosticSource": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             },
             "System.Diagnostics.PerformanceCounter": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.2, )"
             }
           },
           "imports": [
